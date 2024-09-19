@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="Elysian.html" class="logo">
+            <img src="Img/Elisyan Isotipo blanco.png" alt="Elysian logo">
+        </a>
+
+        <ul class="navlist">
+            <li><a href="Elysian.html">Home</a></li>
+            <li><a href="Shop.html">Shop</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #3d3d3d;
+            min-height: 100vh;
+        }
+
+
+        .logo {
+            display: flex;
+            height: 200px;
+            margin: 40px;
+            transition: all .6s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-5px);
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #ffffff;
+            background-color: #171718;
+            border: none;
+            transition: all .6s ease;
+            z-index: 999;
+            box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navlist {
+            display: flex;
+            margin: 50px;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+        }
+
+        .navlist a {
+            padding: 20px;
+            display: flex;
+            color: antiquewhite;
+            transition: all .6s ease;
+        }
+
+        .navlist a:hover {
+            transform: translateY(-5px);
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 150px;
+            /* To avoid overlap with the header */
+        }
+
+        form {
+            background: #646464;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            margin-bottom: 15px;
+        }
+
+        label {
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #5e5e5e;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #343434;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4e4e4e;
+        }
+
+        textarea {
+            resize: none;
+        }
+    </style>
+
+    <section>
+        <div class="form-container">
+
+
+            <div class="form-main">
+                <form action="">
+                    <h1>Contactanos</h1>
+
+                    <div class="form-input">
+                        <label for="">Nombre</label><br>
+                        <input type="text" placeholder="Nombre" placeholder="Introduzca su nombre" id="name">
+                    </div>
+
+                    <div class="form-input">
+                        <label for="">Email</label><br>
+                        <input type="text" placeholder="Correo Electronico" id="email">
+                    </div>
+
+                    <div class="form-input">
+                        <label for="">Numero Telefonico</label><br>
+                        <input type="text" placeholder="Numero Telefonico" id="phone">
+                    </div>
+
+                    <div class="form-input">
+                        <label for="">Sujeto</label><br>
+                        <input type="text" placeholder="Sujeto" id="subject">
+                    </div>
+
+                    <div class="form-input">
+                        <label for="">Mensaje</label><br>
+                        <textarea name="" id="message" cols="31" rows="4"
+                            placeholder="Como te podemos ayudar?"></textarea>
+                    </div>
+
+                    <div class="form-input">
+                        <button type="button" onclick="SendEmail()">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function SendEmail() {
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let phone = document.getElementById("phone").value;
+                let subject = document.getElementById("subject").value;
+                let message = document.getElementById("message").value;
+
+
+                if (!name || !email || !phone || !subject || !message) {
+                    alert("Por favor, complete todos los campos antes de enviar.");
+                    return;
+                }
+
+                let body = `Nombre: ${name}<br/>Correo Electronico: ${email}<br/>Numero Telefonico: ${phone}<br/>Sujeto: ${subject}<br/>Mensaje: ${message}`;
+
+                Email.send({
+                    SecureToken: "c307312e-58de-489b-8b8e-09a15b5dc34b",
+                    To: 'alexhr2199@gmail.com',
+                    From: "alexhr2199@gmail.com",
+                    Subject: "Mensaje del Contact Tab",
+                    Body: body
+                }).then(
+                    message => alert(message)
+                );
+            }
+        </script>
+</body>
+
+</html>
