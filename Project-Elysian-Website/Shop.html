@@ -289,6 +289,17 @@
         </div>
     </footer>
 
+    <script>
+        const moreButtons = document.querySelectorAll('.btn');
+
+        moreButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                alert('¡Pronto!');
+            });
+        });
+    </script>
+
 </body>
 
 </html>
